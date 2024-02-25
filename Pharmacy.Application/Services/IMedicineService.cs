@@ -10,5 +10,6 @@ namespace Pharmacy.Application.Services
     public interface IMedicineService
     {
         Task<bool> CreateAsync(AddMedicineDTO addMedicineDTO,string ImgPath);
+        Task<List<ShowMedicineDTO>> GetAll();
     }
 }

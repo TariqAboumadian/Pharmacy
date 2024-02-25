@@ -1,8 +1,19 @@
-﻿@{
+﻿@using Pharmacy.Application.Services
+@using Pharmacy.DTO.Category
+@model List<ShowCategoryIndexDTO>
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row row-cols-1 mt-3 row-cols-md-4 g-4">
+    @foreach(var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="@FileSetings.imagespath/@item.Image" class="card-img-top" style="max-height:150px" alt="...">
+                <div class="card-footer">
+                    <small class="text-muted">@item.Name</small>
+                </div>
+            </div>
+        </div>
+    }
 </div>

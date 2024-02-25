@@ -1,0 +1,24 @@
+﻿@using Pharmacy.Application.Services
+@using Pharmacy.DTO.Medicine
+@model List<ShowMedicineDTO>
+@{
+    ViewData["Title"] = "Medicines";
+}
+<div class="row row-cols-1 mt-3 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="@FileSetings.imagespath/@item.Image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">Price : @item.Price$</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

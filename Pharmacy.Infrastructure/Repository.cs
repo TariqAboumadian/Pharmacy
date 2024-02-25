@@ -30,9 +30,9 @@ namespace Pharmacy.Infrastructure
             return res != null ? true : false;
         }
 
-        public Task<IQueryable<Tentity>> GetAllAsync()
+        public Task<List<Tentity>> GetAllAsync()
         {
-            return Task.FromResult(_dbset.Select(p => p));
+            return Task.FromResult(_dbset.ToList());
         }
 
         public async Task<Tentity> GetByIdAsync(Tid id)

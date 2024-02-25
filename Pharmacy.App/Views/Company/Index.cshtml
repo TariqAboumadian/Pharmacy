@@ -1,0 +1,63 @@
+﻿@using Pharmacy.DTO.Company
+@model List<ShowIndexCompanyDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+@section CSSFiles{
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+}
+        
+<div id="layoutSidenav_content" class="my-3">
+    <main>
+        <div class="container-fluid px-4">
+            <div class="card mb-4">
+                <div class="card-header text-bg-info d-flex justify-content-between text-light fs-3">
+                    <div>
+                        <i class="fas fa-table me-1"></i>
+                        Companies
+                    </div>
+                    <div>
+                        <a asp-action="Create" class="btn btn-secondary">Create<i class="fa-solid fa-plus"></i></></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple" class="table-primary">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Phone</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+@section Scripts{
+    <script src="~/js/scripts.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/datatables-simple-demo.js" asp-append-version="true"></script>
+}

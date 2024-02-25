@@ -1,0 +1,44 @@
+﻿@using Pharmacy.Application.Services
+@using Pharmacy.DTO.Category
+@model AddCategory
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="w-75 mx-auto">
+    <h2 class="mt-5 text-success">Create Category</h2>
+    <form method="post" enctype="multipart/form-data">
+        <fieldset>
+            <div class="text-info" asp-validation-summary="All"></div>
+            <div class="form-group col g-5">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter Category Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="form-label mt-4">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="form-label mt-4"></label>
+                <input asp-for="Image" type="file" class="form-control"
+                       data-role-extension="@FileSetings.allowedextensions.Replace(".",string.Empty)"
+                       data-msg-extension="Not allowed Extension"
+                       data-role-filesize="@FileSetings.MaxFilleSizeInBytes"
+                       data-msg-filesize="Maximum Allwed size @FileSetings.MaxFilleSizeInMB MB">
+                <span asp-validation-for="Image" class="text-danger d-block"></span>
+                <small class="form-text text-muted">only @FileSetings.allowedextensions filles are alloewd with max size @FileSetings.MaxFilleSizeInMB MB</small>
+            </div>
+            <div class="col-md-6 d-flex mx-auto justify-content-center overflow-hidden">
+                <img alt="Cover" class="d-none mt-4" id="imgcover" style="max-height:500px;border-radius:8px" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    <script src="~/js/formjs.js" asp-append-version="true"></script>
+}
+
